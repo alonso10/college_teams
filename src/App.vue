@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand href="/">HOME</b-navbar-brand>
     </b-navbar>
-    <b-container>
+    <b-container fluid>
       <router-view />
     </b-container>
   </div>
@@ -12,7 +12,10 @@
 <script>
 
 export default {
-  name: 'app'
+  name: 'app',
+  created() {
+    this.$store.dispatch('fetchColleges')
+  }
 }
 </script>
 
