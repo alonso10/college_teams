@@ -24,7 +24,9 @@
         </b-row>
       </b-card-body>
       <template v-slot:footer>
-        <b-button variant="outline-primary" @click="addFavorite(college)">Agregar a Favoritos</b-button>
+        <b-button variant="outline-primary" @click="isFavorite ? deleteFavorite(college) : addFavorite(college)">
+          {{ isFavorite ? 'Eliminar de' : 'Agregar a' }} Favoritos 
+        </b-button>
       </template>
     </b-card>
   </div>
@@ -34,18 +36,21 @@
 export default {
   name: 'CollegeCard',
   props: {
-    college: Object
+    college: Object,
+    isFavorite: {
+      type: Boolean,
+      default: false
+    }
   },
-  // mounted() {
-    /* eslint-disable no-console */
-    // console.log(this.college)
-  // },
   methods: {
     getColor(color) {
       return `background-color: ${color}`
     },
     addFavorite(college) {
       this.$store.dispatch('addFavorite', college)
+    },
+    deleteFavorite(college) {
+      this.$store.dispatch('removeFavorite', college)
     } 
   }
 }

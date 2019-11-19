@@ -1,9 +1,9 @@
 <template>
   <div>
-    <b-jumbotron header="List College Teams"></b-jumbotron>
+    <b-jumbotron header="List Favorite College Teams"></b-jumbotron>
     <div class="content-college">
       <div v-for="college in colleges" :key="college.id" class="college">
-        <college-card :college="college"/>
+        <college-card :college="college" is-favorite />
       </div>
     </div>
   </div>
@@ -19,10 +19,7 @@ export default {
   },
   computed: {
     colleges() {
-      return this.$store.getters.getAllColleges
-    },
-    rows() {
-      return this.$store.getters.getRows
+      return this.$store.getters.getAllFavorites
     }
   }
 }

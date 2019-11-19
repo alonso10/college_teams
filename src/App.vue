@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="/">HOME</b-navbar-brand>
+      <b-navbar-brand href="/">Home</b-navbar-brand>
+      <b-navbar-nav>
+        <b-nav-item href="/favorites">Favorites</b-nav-item>
+      </b-navbar-nav>
     </b-navbar>
     <b-container fluid>
       <router-view />

@@ -8,7 +8,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import store from '@/store/index';
 
 import App from './App.vue'
-import CollegeList from './pages/ListColleges.vue';
+import CollegeList from '@/pages/ListColleges.vue';
+import FavoriteList from '@/pages/ListFavorites.vue';
 
 Vue.config.productionTip = false
 Vue.config.devtools = process.env.NODE_ENV === 'development'
@@ -18,7 +19,8 @@ Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: CollegeList }
+  { path: '/', component: CollegeList },
+  { path: '/favorites', component: FavoriteList }
 ];
 
 const router = new VueRouter({
