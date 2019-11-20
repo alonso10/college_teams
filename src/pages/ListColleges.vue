@@ -1,7 +1,13 @@
 <template>
-  <div>
+  <div class="content-college">
     <b-jumbotron header="List College Teams"></b-jumbotron>
-    <div class="content-college">
+    <college-search />
+    <div v-if="countSearch > 0">
+      <div v-for="college in searchs" :key="college.id" class="college">
+        <college-card :college="college"/>
+      </div>
+    </div>
+    <div v-else>
       <div v-for="college in colleges" :key="college.id" class="college">
         <college-card :college="college"/>
       </div>
@@ -11,18 +17,23 @@
 
 <script>
 import CollegeCard from '@/components/CollegeCard.vue';
+import CollegeSearch from '@/components/SearchColleges.vue';
 
 export default {
   name: "ListCollege",
   components: {
-    CollegeCard
+    CollegeCard,
+    CollegeSearch
   },
   computed: {
     colleges() {
       return this.$store.getters.getAllColleges
     },
-    rows() {
-      return this.$store.getters.getRows
+    searchs() {
+      return this.$store.getters.getAllSearch
+    },
+    countSearch() {
+      return this.$store.getters.getSearchRecords
     }
   }
 }

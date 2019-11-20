@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content-colleges">
     <b-card
       border-variant="info"
       header-tag="header"
@@ -57,6 +57,9 @@ export default {
 </script>
 
 <style scoped>
+.content-colleges {
+  margin-top: 2rem;
+}
 .content-color {
   width: 50px;
   height: 50px;

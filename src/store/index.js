@@ -16,17 +16,24 @@ const store = new Store({
   state: {
     colleges: [],
     errorRequest: {},
-    favorites: []
+    favorites: [],
+    search: []
   },
   getters: {
     getAllColleges(state) {
       return state.colleges;
+    },
+    getAllSearch(state) {
+      return state.search;
     },
     getAllFavorites(state) {
       return state.favorites;
     },
     getRows(state) {
       return state.colleges.length;
+    },
+    getSearchRecords(state) {
+      return state.search.length;
     }
   },
   actions: {
@@ -47,6 +54,9 @@ const store = new Store({
     },
     removeFavorite ({ commit }, college) {
       commit('setFavorite', { remove: true, college })
+    },
+    searchCollege ({ commit }, value) {
+      commit('setSearch', value)
     }
   },
   mutations: {
@@ -66,6 +76,13 @@ const store = new Store({
         favorites.push(college);
       }
       state.favorites = favorites;
+    },
+    setSearch(state, value) {
+      const { colleges } = state;
+      const search = colleges.filter((item) => {
+        return  item.school && item.school.toLowerCase().includes(value.toLowerCase())
+      });
+      state.search = search;
     }
   },
   plugins: [createPersistedState(persistedstate)]
