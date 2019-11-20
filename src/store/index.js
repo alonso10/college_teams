@@ -57,6 +57,9 @@ const store = new Store({
     },
     searchCollege ({ commit }, value) {
       commit('setSearch', value)
+    },
+    sortColleges ({ commit }, order) {
+      commit('sortColleges', order)
     }
   },
   mutations: {
@@ -83,6 +86,29 @@ const store = new Store({
         return  item.school && item.school.toLowerCase().includes(value.toLowerCase())
       });
       state.search = search;
+    },
+    sortColleges(state, order) {
+      let { colleges, search } = state;
+      if(search.length) {
+        search.sort((a,b) => {
+          if(order === 1) {
+            return a.school < b.school ? -1 : a.school > b.school ? 1 : 0; 
+          }
+          if(order === 2) {
+            return a.school > b.school ? -1 : a.school < b.school ? 1 : 0; 
+          }
+        });
+        state.search = search;
+      }
+      colleges.sort((a,b) => {
+        if(order === 1) {
+          return a.school < b.school ? -1 : a.school > b.school ? 1 : 0; 
+        }
+        if(order === 2) {
+          return a.school > b.school ? -1 : a.school < b.school ? 1 : 0; 
+        }
+      });
+      state.colleges = colleges;
     }
   },
   plugins: [createPersistedState(persistedstate)]
