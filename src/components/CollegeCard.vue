@@ -25,8 +25,10 @@
       </b-card-body>
       <template v-slot:footer>
         <b-button variant="outline-primary" @click="isFavorite ? deleteFavorite(college) : addFavorite(college)">
-          {{ isFavorite ? 'Eliminar de' : 'Agregar a' }} Favoritos 
+          {{ isFavorite ? 'Remove' : 'Add' }} Favorites 
         </b-button>
+        <span class="divider"></span>
+        <b-button variant="outline-info" :to="'/college/' + college.id">View Details</b-button>
       </template>
     </b-card>
   </div>
@@ -57,6 +59,9 @@ export default {
 </script>
 
 <style scoped>
+.divider {
+  margin: 0 10px;
+}
 .content-colleges {
   margin-top: 2rem;
 }

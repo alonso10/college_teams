@@ -10,6 +10,7 @@ import store from '@/store/index';
 import App from './App.vue'
 import CollegeList from '@/pages/ListColleges.vue';
 import FavoriteList from '@/pages/ListFavorites.vue';
+import CollegeDetails from '@/pages/CollegeDetails.vue';
 
 Vue.config.productionTip = false
 Vue.config.devtools = process.env.NODE_ENV === 'development'
@@ -20,7 +21,8 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/', component: CollegeList },
-  { path: '/favorites', component: FavoriteList }
+  { path: '/favorites', component: FavoriteList },
+  { path: '/college/:id', component: CollegeDetails }
 ];
 
 const router = new VueRouter({
